@@ -1,0 +1,26 @@
+{
+    "name": "larape/admin-template",
+    "description": "Backend Admin Template With Tailwind",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pramudya Saputra",
+            "email": "pramudyasaputra89@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Larape\\Admin_template\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Larape\\Admin_template\\AdminTemplateServiceProvider"
+            ]
+        }
+    }
+}
