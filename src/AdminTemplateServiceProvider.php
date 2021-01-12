@@ -33,7 +33,7 @@ class AdminTemplateServiceProvider extends ServiceProvider
         View::composer('larape::master.master',MenuViewComposer::class);
 
         $this->publishes([
-            __DIR__.'/views'   => resource_path('views/vendor/admin-template')
+            __DIR__.'/views/components'   => resource_path('views/vendor/admin-template')
         ]);
     }
 }

@@ -54,7 +54,9 @@
         }
         @stack('css-style')
 	</style>
-	<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    @include('larape::components.styles')
+    @include('larape::components.script')
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 </head>
 <body class="w-full h-screen overflow-x-hidden">
 	<header class="relative flex w-full h-20 bg-white shadow-sm p-5" x-data="{ isOpen:false,settingMenu:false}">

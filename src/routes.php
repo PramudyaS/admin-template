@@ -7,10 +7,6 @@ Route::group(['as'=>'template_setting.','prefix'=>'template_setting','namespace'
     Route::patch('update/{id}','TemplateSettingController@update')->name('update');
 });
 
-Route::get('/',function(){
-    return \Larape\Admin_template\Models\Menu::with('sub_menus')->get();
-});
-
 Route::resource('menu',Larape\MenuController::class);
 Route::resource('sub_menu',Larape\SubMenuController::class);
 
