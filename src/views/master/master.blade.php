@@ -54,8 +54,8 @@
         }
         @stack('css-style')
 	</style>
-    @include('larape::components.styles')
-    @include('larape::components.script')
+    @include('vendor.admin-template.styles')
+    @include('vendor.admin-template.script')
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 </head>
 <body class="w-full h-screen overflow-x-hidden">
