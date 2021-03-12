@@ -61,10 +61,12 @@
 <body class="w-full h-screen overflow-x-hidden">
 	<header class="relative flex w-full h-20 bg-white shadow-sm p-5" x-data="{ isOpen:false,settingMenu:false}">
 		<div class="flex-shrink justify-start inline-flex">
-			<img src="{{ asset('storage/'.$template_config->company_logo) }}" alt="" class="w-auto h-10 object-cover">
+			<img src="{{ asset('storage/'.$template_config->company_logo) }}" alt="" class="w-auto h-10">
+            @if(!$template_config->show_logo_only)
 			<a href="" class="logo font-bold text-xl tracking-tight mt-1 pl-2">
                 {{ $template_config->company_name_value }}
 			</a>
+            @endif
 		</div>
 		<div class="flex justify-start hidden md:block pl-16">
 			<div class="relative text-gray-600 focus-within:text-gray-400">

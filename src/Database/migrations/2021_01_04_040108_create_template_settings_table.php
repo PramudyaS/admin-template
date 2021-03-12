@@ -18,6 +18,7 @@ class CreateTemplateSettingsTable extends Migration
             $table->string('company_name');
             $table->longText('logo')->nullable();
             $table->string('base_color')->default('white');
+            $table->boolean('show_logo_only')->default(false);
             $table->boolean('dark_mode')->default(0);
             $table->timestamps();
         });
