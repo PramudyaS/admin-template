@@ -8,10 +8,16 @@
 	<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"
+    />
 	<style>
 		body{
 			font-family: 'Roboto',sans-serif;
 		}
+
+        aside{
+            font-family: 'Inter', sans-serif;
+        }
 
 		[x-cloak] {
 			display: none;
@@ -58,8 +64,8 @@
     @include('vendor.admin-template.script')
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 </head>
-<body class="w-full h-screen overflow-x-hidden">
-	<header class="relative flex w-full h-20 bg-white shadow-sm p-5" x-data="{ isOpen:false,settingMenu:false}">
+<body class="w-full h-screen overflow-x-hidden overflow-y-hidden">
+	<header class="relative flex w-full h-20 bg-white shadow-sm p-5 z-20" x-data="{ isOpen:false,settingMenu:false}">
 		<div class="flex-shrink justify-start inline-flex">
 			<img src="{{ asset('storage/'.$template_config->company_logo) }}" alt="" class="w-auto h-10">
             @if(!$template_config->show_logo_only)
@@ -112,9 +118,9 @@
 		</div>
 	</header>
 
-	<div class="w-screen h-screen flex bg-gray-100">
+	<div class="w-screen h-full flex bg-gray-100">
 		<!--- Dekstop Sidebar --->
-		<nav class="bg-white w-60 h-screen pt-5 shadow-md hidden md:block">
+		<aside class="bg-white w-60 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0 hidden md:block z-10">
             <h3 class="font-semibold text-sm text-gray-600 pl-6 mt-2">Home</h3>
             @foreach($menus as $menu)
                 @if($menu->has_child)
@@ -137,7 +143,7 @@
             @endforeach
             <h3 class="font-semibold text-sm text-gray-600 pl-6 mt-2">Settings</h3>
             <ul class="mt-3 text-m" x-data="{ isDropdown:false }">
-                <li class="group bg-teal-500 w-full p-2 hover:bg-green-400">
+                <li class="group transform transition duration-500 hover:scale-10 bg-teal-500 w-full p-2 hover:bg-green-400 rounded-sm">
                     <a href="#" @click="isDropdown = !isDropdown" class="inline-flex items-center w-full text-sm font-bold text-gray-800 group-hover:text-white">
                         <img class="pr-4 pl-4" src="https://img.icons8.com/flat_round/23/000000/settings--v1.png"/>Main Menu
                         <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': isDropdown, 'rotate-0': !isDropdown}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
@@ -154,21 +160,20 @@
                     </a>
                 </li>
             </ul>
-		</nav>
+		</aside>
 		<!--- Mobile Sidebar -->
-		<nav x-data="{ isOpen:false,settingMenu:false}" x-show="isOpen" class="relative bg-white w-60 h-screen p-6 shadow-md md:block" transition:enter="transition ease-in-out duration-150" x-transition:enter-start="opacity-0 transform -translate-x-20" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in-out duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 transform -translate-x-20" @click.away="isOpen = false" @keydown.escape="isOpen = false">
+		<aside x-data="{ isOpen:false,settingMenu:false}" x-show="isOpen" class="relative bg-white w-60 h-screen p-6 shadow-md md:block" transition:enter="transition ease-in-out duration-150" x-transition:enter-start="opacity-0 transform -translate-x-20" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in-out duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 transform -translate-x-20" @click.away="isOpen = false" @keydown.escape="isOpen = false">
 			<h3 class="font-medium text-lg">Home</h3>
 			<ul class="mt-2">
 				<li><a href="">Dashboard</a></li>
 				<li><a href="">Dashboard</a></li>
 			</ul>
-		</nav>
-
+		</aside>
 
 		<!--- Content -->
-		<div class="container p-8">
+		<main class="container p-8 overflow-y-scroll">
 			@yield('content')
-		</div>
+		</main>
 	</div>
 
     <!--- Form For Delete Action -->
